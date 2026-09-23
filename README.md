@@ -33,6 +33,10 @@ This is my first prototype:
 
 ![8 inch Capacitive Moisture Probe](./images/cap_moist_sens_prototype.jpeg).
 
+It starts with an 1/4 inch by 18 inch fiberglass rod. Before I mount the Adafruit capacitive moisture sensors on the rod, I attached the four wire leads, taped off the capacitive portion of the sensor, then coated the electronics and JST PH connectors with FlexSeal by dipping them in the can (three coats). 
+
+Next, I used a silicone pad as a spacer and then used zip ties to faster the sensors to the rod. The sensors are spaced so the tip of the next sensor up the rod is placed at the top of the previous sensor's capacitive portion of the sensor. By doing this, I stack 4 - 2 inch sensors to create an 8 inch sensor probe.
+
 ## Experiments
 In order to determine whether or not this probe will work, I need to perform the following experiments:
 
