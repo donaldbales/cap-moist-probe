@@ -2,7 +2,7 @@
 
 # I<sup>2</sup>C Capacitive Moisture Probe
 
-This is an electronics and software project to build an 8 inch capacitive moisture probe using off-the-shelf I2C sensors and parts from Adafruit paired with a Raspberry Pi 3 (RPi).
+This is an electronics and software project to build an 8 inch capacitive moisture probe using off-the-shelf I<sup>2</sup>C sensors and parts from Adafruit paired with a Raspberry Pi 3 (RPi).
 
 The soil sensor is functionally 2 inches long. I plan to stack four of them vertically around a fiberglass rod so they cover an 8 inch rise. The sensors have four possible addresses. In this design, I will use one 5 port passive hub to combine the four sensors. The hub will in turn be connected into an I<sup>2</sup>C active terminator to allow for a distance of more than one meter for the I<sup>2</sup>C line from the RPi. 
 
@@ -28,6 +28,11 @@ https://www.adafruit.com/product/5664
 Adafruit PCA9548 8-Channel STEMMA QT / Qwiic I2C Multiplexer - TCA9548A Compatible $7/ea.  
 https://www.adafruit.com/product/5626
 
+## Prototype
+This is my first prototype:
+
+![8 inch Capacitive Moisture Probe](./images/cap_moist_sens_prototype.jpeg).
+
 ## Experiments
 In order to determine whether or not this probe will work, I need to perform the following experiments:
 
@@ -45,4 +50,32 @@ In order to determine whether or not this probe will work, I need to perform the
 
 ## Software
 For each experiment, I will write a separate program in Python to collect the sensor(s') data from a Raspberry Pi 3. Why Python? Because Python is a very approachable programming language, originally designed as a language to teach programming and, Adafruit has open-source software available to address each of the sensors is sells.
+
+## Detect the Sensors
+```
+don@raspberrypi-3-lab:~ $ sudo i2cdetect -y 1
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- --
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- 36 37 38 39 -- -- -- -- -- --
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+70: -- -- -- -- -- -- -- --
+```
+
+## Sample Data
+
+I collected data on four different sensors with addresses 0x36, 0x37, 0x38, 0x39.
+
+Here's the average values when in air and then immersed in tap water.
+
+| Sensor | Average Air | Average Water|
+|:------:|:-----------:|:------------:|
+| 0x36   | 340         | 469          |
+| 0x37   | 378         | 460          |
+| 0x38   | 343         | 457          |
+| 0x39   | 350         | 485          |
+
 
